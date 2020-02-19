@@ -1,0 +1,25 @@
+{
+  "name": "gdl004-md-links-master",
+  "version": "1.0.0",
+  "description": "## Índice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dionisiaca/GDL004-md-links.git"
+  },
+  "keywords": [
+    "md",
+    "links",
+    "laboratoria",
+    "nodejs"
+  ],
+  "author": "Dionisiaca",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dionisiaca/GDL004-md-links/issues"
+  },
+  "homepage": "https://github.com/Dionisiaca/GDL004-md-links#readme"
+}
