@@ -1,8 +1,15 @@
 {
-  "name": "gdl004-md-links-master",
+  "name": "@dionisiaca/md-links",
   "version": "1.0.0",
-  "description": "## Índice",
+  "description": "Reads markdown files for URL validation",
   "main": "index.js",
+  "bin": {
+    "@dionisiaca/md-links": "bin/md-links",
+    "md-links": "bin/md-links"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,12 +21,19 @@
     "md",
     "links",
     "laboratoria",
-    "nodejs"
+    "nodejs",
+    "cli"
   ],
   "author": "Dionisiaca",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Dionisiaca/GDL004-md-links/issues"
   },
-  "homepage": "https://github.com/Dionisiaca/GDL004-md-links#readme"
+  "homepage": "https://github.com/Dionisiaca/GDL004-md-links#readme",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "jest": "^25.1.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {}
 }
