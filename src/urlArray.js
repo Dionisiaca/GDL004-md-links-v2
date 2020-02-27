@@ -1,5 +1,7 @@
 const fs = require('fs');
+const chalk = require('chalk');
 let pathFlag = process.argv[2];
+
 
 module.exports = {
     //Parsing the file
@@ -12,7 +14,7 @@ module.exports = {
                 console.log(linksArray);
                 //return linksArray;
             } else {
-                console.log('ERR: something went wrong')
+                console.log(chalk.redBright('ERR: something went wrong while parsing the file'))
             }
         });
     }

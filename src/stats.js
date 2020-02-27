@@ -1,4 +1,6 @@
 const fs = require('fs');
+const chalk = require('chalk');
+
 const pathFlag = process.argv[2];
 
 module.exports = {
@@ -9,9 +11,9 @@ module.exports = {
                 const regEx = new RegExp(urls);
                 let linksArray = data.match(regEx);
                 let totalLinks = linksArray.length;
-                console.log(totalLinks);
+                console.log(chalk.blueBright(totalLinks));
             } else {
-                console.log('ERR: something went wrong')
+                console.log(chalk.blueBright('ERR: something went wrong while recieving the stats'))
             }
         });
     }

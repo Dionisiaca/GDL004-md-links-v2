@@ -1,5 +1,7 @@
 const fetch = require('node-fetch');
 const fs = require('fs');
+const chalk = require('chalk');
+
 const pathFlag = process.argv[2];
 
 let deadLinks = [];
@@ -17,15 +19,15 @@ module.exports = {
                     .then (response => {
                         if (response.status >= 400){
                             deadLinks++;
-                            console.warn(`ERROR. URL: ${link} STATUS CODE ${response.status}`);
+                            console.log(chalk.redBright(`ERROR. URL: ${link} STATUS CODE ${response.status}`));
                         }else{
                             aliveLinks++;
-                            console.log(`OK. URL: ${link} STATUS CODE ${response.status}`)
+                            console.log(chalk.greenBright(`OK. URL: ${link} STATUS CODE ${response.status}`))
                         }
                     });
                 });
             } else {
-                console.log('ERR: something went wrong')
+                console.log(chalk.redBright('ERR: something went wrong while validating the file'))
             }
         });
     }

@@ -6,46 +6,48 @@ const path = require('path');
 const fetch = require('node-fetch');
 const chalk = require('chalk');
 
+const filePath = process.argv[2]; //what if it doesn't recieves a path?
+let commandFlag = process.argv[3];
 const log = console.log;
-const pathFlag = process.argv[2];
 
-//Command Line Interface
+//
 const mdLinks = () => {
-    if(pathFlag.includes('.md')){
-        log('---------MARKDOWN LINKS---------');
-        log('coded by @dionisiaca');
+    if(filePath.includes('.md')){
+        log(chalk.bold.magenta('--------------------------------------------MARKDOWN LINKS--------------------------------------------'));
+        log(chalk.greenBright.italic('-----------------------------------------coded by @dionisiaca-----------------------------------------'));
         switch (commandFlag) {
             case '--validate':
             case '--v':
-                log(validate.validateFn());
+                //Validate Fn
+                log('validate');
                 break;
             case '--stats':
             case '--s':
-                log('Total links: ' + stats.statsFn());
+                //Stats Fn
+                log('stats');
                 break; 
             case '--stats--validate':
             case '--s--v':
+                //Status/Validate Fn
                 log('stats & validate')
                 break;
             default:
-                log(urlArr.parseFile(pathFlag));
-                setTimeout(() => { 
-                log('ERR: Please write a valid command');
-                }, 3000);
+                //Show links array fn
+                parseFile(pathFlag);
+                log(linksArray);
         }
     }else{ //add functionality in case the program recieves a directory
         console.error('ERR: Invalid path or file extension. The program expects an .md file')
     };
     
-}
+};
 
-parseFile(path) => {
+function parseFile(filePath) {
     fs.readFile(pathFlag,'utf-8', (error, data)=> {
         if(!error){ //Save links array
             const urls = /(https?:\/\/[^\s]+)/g;
             const regEx = new RegExp(urls);
             let linksArray = data.match(regEx);
-            //console.log(linksArray);
             return linksArray;
         } else {
             console.log('ERR: something went wrong')
@@ -54,3 +56,4 @@ parseFile(path) => {
 }
 
 
+mdLinks();
