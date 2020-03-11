@@ -1,50 +1,24 @@
-//Modules
-const urlArr = require('./src/urlArray');
-const stats = require('./src/stats.js');
-const validate = require('./src/validate.js');
-const chalk = require('chalk');
+// Modules
+const {parseFile} = require('./src/parseFile.js');
+const {obtainLinks} = require('./src/obtainLinks.js')
 
-//Input variables
-let pathFlag = process.argv[2];
-let commandFlag = process.argv[3];
+//MdLinks Fn
 
-//Validate the .md file
- const mdLinks = () => {
-    console.log(chalk.bold.magenta('--------------------------------------------MARKDOWN LINKS--------------------------------------------'));
-    console.log(chalk.greenBright.italic('-----------------------------------------coded by @dionisiaca-----------------------------------------'));
-     if(pathFlag.includes('.md')){
-        switch (commandFlag) {
-            case '--validate':
-            case '--v':
-                console.log(validate.validateFn());
-                break;
-            case '--stats':
-            case '--s':
-                console.log('Total links: ' + stats.statsFn());
-                break; 
-            case '--stats--validate':
-            case '--s--v':
-                console.log('stats & validate')
-                break;
-            default:
-                console.log(urlArr.parseFile(pathFlag));
-                setTimeout(() => { 
-                console.log(chalk.blue('To get more info, use the --validate or --stats command'));
-                }, 3000);
+module.exports.mdLinks = (path, options) => {
+    return new Promise((resolve, reject)=>{
+        if (path.includes('.md')){
+            .then((resolve) => {
+                return parseFile(path)
+            })
+            .then((resolve)=> {
+                return obtainLinks(resolve, path)
+            })
+            .then(data => {
+                resolve(data)
+            })
+            .catch(reject)
+        }else{
+            console.error('ERR: Invalid path or file extension. The program expects an .md file to work with')
         }
-     } else {
-        console.error(chalk.redBright('ERR: Invalid path or file extension. The program expects an .md file to work with'))
-     }
-};
-
-
-//Calling the function
-mdLinks();
-
-
-
-module.exports.mdLinks = () => {
-    return new Promise((resolve, reject) => {
-        
-    })
+    })   
 }
