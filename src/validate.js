@@ -27,7 +27,7 @@ module.exports = {
                     });
                 });
             } else {
-                console.log(chalk.redBright('ERR: something went wrong while validating the file'))
+                console.log(chalk.red('ERR: something went wrong while validating the file'))
             }
         });
     }

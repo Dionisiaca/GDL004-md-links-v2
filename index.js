@@ -10,6 +10,8 @@ let commandFlag = process.argv[3];
 
 //Validate the .md file
  const mdLinks = () => {
+    console.log(chalk.bold.magenta('--------------------------------------------MARKDOWN LINKS--------------------------------------------'));
+    console.log(chalk.greenBright.italic('-----------------------------------------coded by @dionisiaca-----------------------------------------'));
      if(pathFlag.includes('.md')){
         switch (commandFlag) {
             case '--validate':
@@ -38,3 +40,11 @@ let commandFlag = process.argv[3];
 
 //Calling the function
 mdLinks();
+
+
+
+module.exports.mdLinks = () => {
+    return new Promise((resolve, reject) => {
+        
+    })
+}
