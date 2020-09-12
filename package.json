@@ -33,7 +33,7 @@
   "dependencies": {
     "esm": "^3.2.25",
     "jest": "^25.1.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {}
 }
